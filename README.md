@@ -1,10 +1,12 @@
 # Selenium Cucumber Framework
 
 ### Prepare your machine:
-JDK Install (http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+Check if you have a JDK (Java Development Kit) installed in Terminal with:
+**java -version**
+If not then then JDK Install (http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 and let it install to the default directory
 
-IDE Install of your choice (IntelliJ Idea/Eclipse)
+THne install an IDE of your choice (IntelliJ Idea/Eclipse)
 
 ## OSX:
 
@@ -37,6 +39,7 @@ and a path to your Java installation should be shown correctly eg:
 The easiest way to install Maven correctly is to use Homebrew.
 Open a Terminal and paste this command to install Homebrew:
 **/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"**
+Press Return to continue and enter your password if prompted
 
 Install Maven with these two commands in Terminal:
 **brew doctor**
@@ -67,16 +70,20 @@ Next Clone this Repo which contains all of the required Selenium Servers and Dri
 
 
 #### Start the Selenium Hub and Node
-In Terminal navigate to the project folder i.e:
-/Users/username/Documents/Repos/MacMillan/selenium_cucumber_framework
+In Terminal navigate to the Selenium Servesrs and Drivers project folder i.e:
+/Users/username/Documents/Repos/MacMillan/selenium-server-and-drivers
 
-Start the node in Terminal with:
+Now Download into this directory the latest Selenium Standalone Server from here
+http://www.seleniumhq.org/download/
+
+Start the node in Terminal with: (ensure your version number is correct)
 **java -jar selenium-server-standalone-2.53.0.jar -role hub**
+A message should appear: *Selenium Grid hub is up and running*
 
 Start the hub in a new Terminal window with:
 **java -jar selenium-server-standalone-2.53.0.jar -role node -nodeConfig macNodeConfig.json**
+A message should appear *The node is registered to the hub and ready to use*
 
-The output should inform you that the node is registered and ready to use
 *INFO - Registering the node to the hub: http://localhost:4444/grid/register*
 *INFO - The node is registered to the hub and ready to use*
 
