@@ -2,7 +2,9 @@
 
 ### Prepare your machine:
 JDK Install (http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
-IDE Install (IntelliJ Idea/Eclipse)
+and let it install to the default directory
+
+IDE Install of your choice (IntelliJ Idea/Eclipse)
 
 ## OSX:
 
@@ -11,29 +13,36 @@ In Mac OSX 10.5 or later, Apple recommends to set the $JAVA_HOME variable to
 
 ##### Set JAVA_HOME
 
-*Bash/Terminal*
+Open a new Terminal: 
+**cd ~** 
+**vim .bash_profile** 
+(This creates a new .bash_profile file using text editor VIM in your root directory)
 
-$ vim .bash_profile 
+Press I to Insert a new line and add:
+**export JAVA_HOME=$(/usr/libexec/java_home)**
+To exit and Save VIM press ESC, then : and wq to save your changes
 
-export JAVA_HOME=$(/usr/libexec/java_home)
+In Terminal use
+**source .bash_profile**
+so your machine recognises the changes
 
-$ source .bash_profile
-
-$ echo $JAVA_HOME
+Now enter
+**echo $JAVA_HOME**
+and a path to your Java installation should be shown correctly eg: 
 /Library/Java/JavaVirtualMachines/1.7.0.jdk/Contents/Home
 
 #### MAVEN installation 
 
 The easiest way to install Maven correctly is to use Homebrew.
-Open a Terminal and paste this to install Homebrew:
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+Open a Terminal and paste this command to install Homebrew:
+**/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"**
 
-Install Maven with these two commands:
-brew doctor
-brew install maven
+Install Maven with these two commands in Terminal:
+**brew doctor**
+**brew install maven**
 
 To ensure Maven has been installed correctly 
-mvn -v 
+**mvn -v** 
 and you should see something similar to this output:
 
 Apache Maven 3.3.9 (bb52d8502b132ec0a5a3f4c09453c07478323dc5; 2015-11-10T16:41:47+00:00)
