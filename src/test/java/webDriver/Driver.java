@@ -1,37 +1,25 @@
 package webDriver;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import supportMethods.FileReader;
+
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.io.FileUtils;
-import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.Platform;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriverException;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import supportFactory.BrowserFactory;
-import supportFactory.PlatformFactory;
-import supportMethods.BrowserStack;
-
 public class Driver {
 
-	public static WebDriver mDriver;
+	public static WebDriver webdriver;
 	public static DesiredCapabilities browser;
 	public static Platform systemPlatform;
 	public static DesiredCapabilities additionalCapabilities = new DesiredCapabilities();
@@ -39,39 +27,24 @@ public class Driver {
 	public static Boolean useBrowserStack() {
 		return Boolean.valueOf(GlobalVariables.config.get("useBrowserstack"));
 	}
-	
-	public synchronized static WebDriver getCurrentDriver() {
-		
-		if (mDriver == null) {
-			browser = new DesiredCapabilities();
-			if (BrowserStack.useBrowserStack()) {
-				browser.merge(BrowserStack.setBrowserCapabilities());
-				browser.merge(BrowserStack.setProjectDetails());
-				BrowserStack.setSeleniumHub();
-			}		
-				
-			PlatformFactory.selectPlatform(browser);
-			BrowserFactory.selectBrowser(browser);
-			browser.merge(additionalCapabilities);
-			browser.setCapability("app", GlobalVariables.config.get("mobileApp"));
-			
-			String seleniumHub = GlobalVariables.config.get("seleniumHub");
-						
-			try {
-				mDriver = new RemoteWebDriver(new URL(seleniumHub), browser);
-			} catch (WebDriverException e) {
-				Driver.writeToReport("WebDriverException: " + e.getMessage());
-				Assert.fail(e.getMessage());
+
+	public static WebDriver getCurrentDriver() throws IOException {
+		String browser = FileReader.readProperties().get("browser");
+
+		if (webdriver == null) {
+
+			if (browser.equals("Chrome")) {
+                    System.setProperty("webdriver.chrome.driver", "/Users/syn3286/Documents/Repos/MacMillan/selenium_cucumber_framework/selenium/chromedriverOSX");
+//                    System.setProperty("webdriver.chrome.driver", "/Users/steveyoung/Documents/Repos/mee_portal_automation/selenium/chromedriverOSX");
+//                    ONLY USE THE ABOVE FOR RUNNING LOCALLY IN THE IDE
+				webdriver = new ChromeDriver();
 			}
-			catch (Exception e) {
-				Driver.writeToReport(e.getMessage());
-			} 
-			finally {
-				Runtime.getRuntime().addShutdownHook(
-						new Thread(new BrowserCleanup()));
+			if (browser.equals("Firefox")) {
+				webdriver = new FirefoxDriver();
 			}
+
 		}
-		return mDriver;
+		return webdriver;
 	}
 	
 	private static class BrowserCleanup implements Runnable {
@@ -86,20 +59,19 @@ public class Driver {
 		}
 	}
 	
-	public static void quit() {
+	public static void quit() throws IOException {
 		getCurrentDriver().quit();
 	}
 	
-	public static void close()
-	{
+	public static void close() throws IOException {
 		getCurrentDriver().close();
 	}
 
-	public static void loadPage(String url) {
+	public static void loadPage(String url) throws IOException {
 		getCurrentDriver().get(url);
 	}
 
-	public static WebElement findElement(By element)  {
+	public static WebElement findElement(By element) throws IOException {
 		try {
 			Thread.sleep(100);
 		} catch (InterruptedException e1) {
@@ -127,7 +99,7 @@ public class Driver {
 		return foundElement;
 	}
 
-	public static List<WebElement> findElements(By element) {
+	public static List<WebElement> findElements(By element) throws IOException {
 		try {
 			Thread.sleep(100);
 		} catch (InterruptedException e) {
@@ -146,12 +118,12 @@ public class Driver {
 
 	}
 
-	public static String getCurrentUrl() {
+	public static String getCurrentUrl() throws IOException {
 		return getCurrentDriver().getCurrentUrl();
 
 	}
 
-	public static String getTitle() {
+	public static String getTitle() throws IOException {
 		return getCurrentDriver().getTitle();
 	}
 
@@ -163,7 +135,7 @@ public class Driver {
 		return filePath;
 	}
 
-	public static void embedScreenshot() {
+	public static void embedScreenshot() throws IOException {
 		
 		byte[] screenshot = ((TakesScreenshot) getCurrentDriver()).getScreenshotAs(OutputType.BYTES);
 		GlobalVariables.scenario.embed(screenshot, "image/png");
@@ -173,50 +145,33 @@ public class Driver {
 		GlobalVariables.scenario.write(string);
 	}
 	
-	public static WebDriver switchToWindow(String window) {
+	public static WebDriver switchToWindow(String window) throws IOException {
 		return getCurrentDriver().switchTo().window(window);
 	}
 	
-	public static WebDriver switchToFrame(String name) {
+	public static WebDriver switchToFrame(String name) throws IOException {
 		return getCurrentDriver().switchTo().frame(name);
 	}
 
-	public static WebDriver switchToFrame(int index) {
+	public static WebDriver switchToFrame(int index) throws IOException {
 		return getCurrentDriver().switchTo().frame(index);
 	}
 	
-	public static WebDriver switchToFrame(WebElement iframe) {
+	public static WebDriver switchToFrame(WebElement iframe) throws IOException {
 		return getCurrentDriver().switchTo().frame(iframe);
 	}
 	
-	public static String getWindowHandle() {
+	public static String getWindowHandle() throws IOException {
 		return getCurrentDriver().getWindowHandle();
 	}
 	
-	public static Set<String> getWindowHandles() {
+	public static Set<String> getWindowHandles() throws IOException {
 		return getCurrentDriver().getWindowHandles();
 	}
-	
-	public static void nextTab()
-	{
-		ArrayList<String> tabs = new ArrayList<String> (Driver.getWindowHandles());
-		int index = 0;
-		for (String tab : tabs)
-		{
-			if (tab == GlobalVariables.mainWindowHandle)
-			{
-				index = tabs.indexOf(tab);
-			}
-		}
-		Driver.switchToWindow(tabs.get(index + 1));
-	}
-	
-	/**
-	 * Designed when there are only two tabs. Avoids issues where the order of window handles differs between browsers
-	 */
-	public static void otherTab()
-	{
-		ArrayList<String> tabs = new ArrayList<String> (Driver.getWindowHandles());
+
+
+	public static void otherTab() throws IOException {
+		ArrayList<String> tabs = new ArrayList<String> (webdriver.getWindowHandles());
 		int index = 0;
 		for (String tab : tabs)
 		{
@@ -227,43 +182,25 @@ public class Driver {
 		}
 		Driver.switchToWindow(tabs.get(index));
 	}
+
 	
-	public static void mainTab()
-	{
-		ArrayList<String> tabs = new ArrayList<String> (Driver.getWindowHandles());
-		int index = 0;
-		for (String tab : tabs)
-		{
-			if (tab == GlobalVariables.mainWindowHandle)
-			{
-				index = tabs.indexOf(tab);
-			}
-		}
-		Driver.switchToWindow(tabs.get(index));
-	}
-	
-	public static Dimension getResolution()
-	{
+	public static Dimension getResolution() throws IOException {
 		return getCurrentDriver().manage().window().getSize();
 	}
 
-	public static void setResolution(int x, int y)
-	{
+	public static void setResolution(int x, int y) throws IOException {
 		getCurrentDriver().manage().window().setSize(new Dimension(x, y));
 	}
 	
-	public static void maximise()
-	{
+	public static void maximise() throws IOException {
 		getCurrentDriver().manage().window().maximize();
 	}
 	
-	public static Actions actions()
-	{
+	public static Actions actions() throws IOException {
 		return new Actions(getCurrentDriver());
 	}
 	
-	public static void dragAndDrop(WebElement start, WebElement finish)  
-	{
+	public static void dragAndDrop(WebElement start, WebElement finish) throws IOException {
 		Driver.actions().moveToElement(finish).perform();
 		Driver.actions().moveToElement(start).perform();
 		Driver.actions().clickAndHold(start).perform();
@@ -272,7 +209,7 @@ public class Driver {
 		Driver.actions().release(finish).perform();
 	}
 	
-	public static Boolean waitForUrlToContain(String url, int time) {
+	public static Boolean waitForUrlToContain(String url, int time) throws IOException {
 		return new WebDriverWait(getCurrentDriver(), time).until(ExpectedConditions.urlContains(url));
 	}
 	
