@@ -1,6 +1,5 @@
 package stepDefinition;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -154,6 +153,9 @@ public class AceStepDefs {
 	public void iCompareNumberOfCoursesFromOLDMecToNEWACESite() throws Throwable {
         String oldCourses = FileReader.readProperties().get("numberOfCoursesOld");
         String newCourses = FileReader.readProperties().get("numberOfCoursesNewSite");
+
+		System.out.println("\n" + "MEC Number of Courses= " + oldCourses);
+		System.out.println("ACE Number of Courses= " + newCourses + "\n");
 
         try {
             assertThat(oldCourses, is((newCourses)));

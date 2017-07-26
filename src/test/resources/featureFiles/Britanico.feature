@@ -4,15 +4,15 @@ Feature: Compare Stats & Logs between Ace and Old MEC website
   So that I can reduce my manual effort
 
   Scenario Outline: Login to OLD Ace Site
-#    Given I am on "<MEC URL>"
-#    And I login with User ID "<MEC User>" and Password "<MEC Password>"
-#    Then I select Login
-#    And I select Continue to the MEC area link
-#
-#    Given I select the Work Area dropdown
-#    And I select the Statistics & Logs option
-#
-#    Then I record the Number Of Users
+    Given I am on "<MEC URL>"
+    And I login with User ID "<MEC User>" and Password "<MEC Password>"
+    Then I select Login
+    And I select Continue to the MEC area link
+
+    Given I select the Work Area dropdown
+    And I select the Statistics & Logs option
+
+    Then I record the Number Of Users
     Then I record the Number Of Courses
 #    Then I record the Number Of Classes
 
