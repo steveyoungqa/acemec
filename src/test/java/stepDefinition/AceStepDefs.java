@@ -13,6 +13,9 @@ import pageObject.OldSitePageObjects;
 import supportMethods.FileReader;
 import webDriver.Driver;
 
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
+
 public class AceStepDefs {
 
 
@@ -30,11 +33,15 @@ public class AceStepDefs {
 		Assert.assertEquals(expectedBrowserTitle, browserTitle);
 	}
 
+	@And("^I switch to Content Frame$")
+	public void iSwitchToContentFrame() throws Throwable {
+		Driver.switchToFrame("contentFrame");
+	}
+
 	// OLD SITE PAGE OBJECTS
     @And("^I login with User ID \"([^\"]*)\" and Password \"([^\"]*)\"$")
     public void iLoginWithUserIDAndPassword(String id, String password) throws Throwable {
 		OldSitePageObjects oldsite = new OldSitePageObjects();
-		Driver.switchToFrame("contentFrame");
 		oldsite.userId().sendKeys(id);
 		oldsite.password().sendKeys(password);
     }
@@ -79,20 +86,17 @@ public class AceStepDefs {
 	public void iRecordTheNumberOfUsers() throws Throwable {
 		String users = Driver.findElement(By.xpath("//*[@id='infopanel']//*[@class='infopaneltable']//*[contains(text(), 'Number of users:')]//following::td[1]")).getText();
 		FileReader.addData("numberOfUsers" , users);
-
-
 	}
 
 	@Then("^I record the Number Of Classes$")
 	public void iRecordTheNumberOfClasses() throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
-		throw new PendingException();
+
 	}
 
 	@Then("^I record the Number Of Courses$")
 	public void iRecordTheNumberOfCourses() throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
-		throw new PendingException();
+		String courses = Driver.findElement(By.xpath("//*[@id='infopanel']//*[@class='infopaneltable']//*[contains(text(), 'Number of courses:')]//following::td[1]")).getText();
+		FileReader.addData("numberOfCoursesOld" , courses);
 	}
 
 
@@ -109,5 +113,57 @@ public class AceStepDefs {
         NewSitePageObjects newsite = new NewSitePageObjects();
         newsite.signIn().click();
     }
+
+	@And("^I record the Number of Courses for the New Site$")
+	public void iRecordTheNumberOfCoursesForTheNewSite() throws Throwable {
+		String courses = Driver.findElement(By.xpath("//*[@class='panel-heading']//*[contains(text(), 'Courses')]//following::div[2]")).getText();
+		FileReader.addData("numberOfCoursesNewSite" , courses);
+	}
+
+	@And("^I record the Number of Users for the New Site$")
+	public void iRecordTheNumberOfUsersForTheNewSite() throws Throwable {
+		String users = Driver.findElement(By.xpath("//*[@class='panel-heading']//*[contains(text(), 'Users')]//following::div[2]")).getText();
+		FileReader.addData("numberOfUsersNewSite" , users);
+	}
+
+    @And("^I record the Number of Classes for the New Site$")
+    public void iRecordTheNumberOfClassesForTheNewSite() throws Throwable {
+
+    }
+
+
+	//Comparison Code
+
+	@Then("^I compare Number of Users from OLD Mec to NEW ACE site$")
+	public void iCompareNumberOfUsersFromOLDMecToNEWACESite() throws Throwable {
+		String oldUsers = FileReader.readProperties().get("numberOfUsers");
+		String newUsers = FileReader.readProperties().get("numberOfUsersNewSite");
+
+		try {
+            assertThat(oldUsers, is((newUsers)));
+        }
+        catch (AssertionError e) {
+
+		System.out.println("\n" + "Number of Users DOES NOT MATCH!");
+		System.out.println("\n" + "MEC Number of Users= " + oldUsers);
+		System.out.println("ACE Number of Users= " + newUsers + "\n");
+	}
+	}
+
+	@Then("^I compare Number of Courses from OLD Mec to NEW ACE site$")
+	public void iCompareNumberOfCoursesFromOLDMecToNEWACESite() throws Throwable {
+        String oldCourses = FileReader.readProperties().get("numberOfCoursesOld");
+        String newCourses = FileReader.readProperties().get("numberOfCoursesNewSite");
+
+        try {
+            assertThat(oldCourses, is((newCourses)));
+        } catch (AssertionError e) {
+            System.out.println("\n" + "Number of Courses DOES NOT MATCH!");
+            System.out.println("\n" + "MEC Number of Courses= " + oldCourses);
+            System.out.println("ACE Number of Courses= " + newCourses + "\n");
+        }
+    }
+
+
 
 }
