@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e1389e10-2051-4e3d-8094-be3f365f3f59" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/pageObject/NewSitePageObjects.java" afterPath="$PROJECT_DIR$/src/test/java/pageObject/NewSitePageObjects.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/pageObject/OldSitePageObjects.java" afterPath="$PROJECT_DIR$/src/test/java/pageObject/OldSitePageObjects.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/stepDefinition/AceStepDefs.java" afterPath="$PROJECT_DIR$/src/test/java/stepDefinition/AceStepDefs.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/resources/config.properties" afterPath="$PROJECT_DIR$/src/test/resources/config.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/resources/featureFiles/AceComparison.feature" afterPath="$PROJECT_DIR$/src/test/resources/featureFiles/AceComparison.feature" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -16,39 +19,62 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AceComparison.feature" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AceComparison.feature" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/resources/featureFiles/AceComparison.feature">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="945">
-              <caret line="63" column="82" lean-forward="true" selection-start-line="63" selection-start-column="82" selection-end-line="63" selection-end-column="82" />
+            <state relative-caret-position="-294">
+              <caret line="0" column="4" lean-forward="true" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Britanico.feature" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/resources/featureFiles/Britanico.feature">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="5" lean-forward="false" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AceStepDefs.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AceStepDefs.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/stepDefinition/AceStepDefs.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2160">
-              <caret line="157" column="74" lean-forward="false" selection-start-line="157" selection-start-column="74" selection-end-line="157" selection-end-column="74" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
+            <state relative-caret-position="2303">
+              <caret line="243" column="100" lean-forward="false" selection-start-line="243" selection-start-column="100" selection-end-line="243" selection-end-column="100" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/resources/config.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NewSitePageObjects.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/pageObject/NewSitePageObjects.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="29" column="53" lean-forward="true" selection-start-line="29" selection-start-column="53" selection-end-line="29" selection-end-column="53" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OldSitePageObjects.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/pageObject/OldSitePageObjects.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="602">
+              <caret line="49" column="44" lean-forward="true" selection-start-line="49" selection-start-column="44" selection-end-line="49" selection-end-column="101" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>site</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -63,8 +89,10 @@
       <list>
         <option value="$PROJECT_DIR$/src/test/java/webDriver/Driver.java" />
         <option value="$PROJECT_DIR$/src/test/resources/featureFiles/Britanico.feature" />
-        <option value="$PROJECT_DIR$/src/test/java/stepDefinition/AceStepDefs.java" />
+        <option value="$PROJECT_DIR$/src/test/java/pageObject/OldSitePageObjects.java" />
+        <option value="$PROJECT_DIR$/src/test/java/pageObject/NewSitePageObjects.java" />
         <option value="$PROJECT_DIR$/src/test/resources/featureFiles/AceComparison.feature" />
+        <option value="$PROJECT_DIR$/src/test/java/stepDefinition/AceStepDefs.java" />
       </list>
     </option>
   </component>
@@ -75,10 +103,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1745" />
-    <option name="y" value="23" />
-    <option name="width" value="1524" />
-    <option name="height" value="1022" />
+    <option name="x" value="2159" />
+    <option name="y" value="36" />
+    <option name="width" value="1173" />
+    <option name="height" value="994" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -725,47 +753,47 @@
       <updated>1501062509189</updated>
       <workItem from="1501062514276" duration="6337000" />
       <workItem from="1501573314658" duration="622000" />
-      <workItem from="1501578648375" duration="6699000" />
+      <workItem from="1501578648375" duration="24103000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Feature__AceComparison - 2017.07.26 at 13h 49m 20s.xml">
+    <history-entry file="Feature__AceComparison - 2017.08.03 at 13h 23m 14s.xml">
       <configuration name="Feature: AceComparison" configurationId="CucumberJavaRunConfigurationType" />
     </history-entry>
-    <history-entry file="Feature__AceComparison - 2017.07.26 at 13h 57m 08s.xml">
+    <history-entry file="Feature__AceComparison - 2017.08.03 at 13h 25m 46s.xml">
       <configuration name="Feature: AceComparison" configurationId="CucumberJavaRunConfigurationType" />
     </history-entry>
-    <history-entry file="Feature__AceComparison - 2017.07.26 at 13h 58m 56s.xml">
+    <history-entry file="Feature__AceComparison - 2017.08.03 at 13h 26m 43s.xml">
       <configuration name="Feature: AceComparison" configurationId="CucumberJavaRunConfigurationType" />
     </history-entry>
-    <history-entry file="Feature__AceComparison - 2017.07.26 at 14h 02m 17s.xml">
+    <history-entry file="Feature__AceComparison - 2017.08.03 at 13h 34m 34s.xml">
       <configuration name="Feature: AceComparison" configurationId="CucumberJavaRunConfigurationType" />
     </history-entry>
-    <history-entry file="Feature__AceComparison - 2017.07.26 at 14h 09m 13s.xml">
+    <history-entry file="Feature__AceComparison - 2017.08.03 at 13h 44m 35s.xml">
       <configuration name="Feature: AceComparison" configurationId="CucumberJavaRunConfigurationType" />
     </history-entry>
-    <history-entry file="Feature__AceComparison - 2017.07.26 at 14h 21m 58s.xml">
+    <history-entry file="Feature__AceComparison - 2017.08.03 at 14h 24m 42s.xml">
       <configuration name="Feature: AceComparison" configurationId="CucumberJavaRunConfigurationType" />
     </history-entry>
-    <history-entry file="Feature__AceComparison - 2017.07.26 at 14h 28m 43s.xml">
+    <history-entry file="Feature__AceComparison - 2017.08.03 at 14h 35m 24s.xml">
       <configuration name="Feature: AceComparison" configurationId="CucumberJavaRunConfigurationType" />
     </history-entry>
-    <history-entry file="Feature__AceComparison - 2017.07.26 at 14h 35m 01s.xml">
+    <history-entry file="Feature__AceComparison - 2017.08.03 at 14h 44m 49s.xml">
       <configuration name="Feature: AceComparison" configurationId="CucumberJavaRunConfigurationType" />
     </history-entry>
-    <history-entry file="Feature__AceComparison - 2017.08.01 at 10h 41m 23s.xml">
+    <history-entry file="Feature__AceComparison - 2017.08.03 at 14h 47m 09s.xml">
       <configuration name="Feature: AceComparison" configurationId="CucumberJavaRunConfigurationType" />
     </history-entry>
-    <history-entry file="Scenario__Login_to_OLD_Ace_Site - 2017.07.26 at 13h 54m 58s.xml">
-      <configuration name="Scenario: Login to OLD Ace Site" configurationId="CucumberJavaRunConfigurationType" />
+    <history-entry file="Feature__AceComparison - 2017.08.03 at 14h 54m 44s.xml">
+      <configuration name="Feature: AceComparison" configurationId="CucumberJavaRunConfigurationType" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13658000" />
+    <option name="totallyTimeSpent" value="31062000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1745" y="23" width="1524" height="1022" extended-state="0" />
+    <frame x="2159" y="36" width="1173" height="994" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -787,10 +815,10 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16374269" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.46803653" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1437247" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2519894" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -836,9 +864,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2160">
           <caret line="157" column="74" lean-forward="false" selection-start-line="157" selection-start-column="74" selection-end-line="157" selection-end-column="74" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -862,16 +888,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2160">
           <caret line="157" column="74" lean-forward="false" selection-start-line="157" selection-start-column="74" selection-end-line="157" selection-end-column="74" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/webDriver/Driver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="38" column="48" lean-forward="false" selection-start-line="38" selection-start-column="48" selection-end-line="38" selection-end-column="48" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -883,20 +900,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/stepDefinition/AceStepDefs.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/webDriver/Driver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2160">
-          <caret line="157" column="74" lean-forward="false" selection-start-line="157" selection-start-column="74" selection-end-line="157" selection-end-column="74" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+        <state relative-caret-position="105">
+          <caret line="96" column="0" lean-forward="false" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/config.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/pageObject/NewSitePageObjects.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="29" column="53" lean-forward="true" selection-start-line="29" selection-start-column="53" selection-end-line="29" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/pageObject/OldSitePageObjects.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="602">
+          <caret line="49" column="44" lean-forward="true" selection-start-line="49" selection-start-column="44" selection-end-line="49" selection-end-column="101" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/resources/featureFiles/AceComparison.feature">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="945">
-          <caret line="63" column="82" lean-forward="true" selection-start-line="63" selection-start-column="82" selection-end-line="63" selection-end-column="82" />
+        <state relative-caret-position="-294">
+          <caret line="0" column="4" lean-forward="true" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/stepDefinition/AceStepDefs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2303">
+          <caret line="243" column="100" lean-forward="false" selection-start-line="243" selection-start-column="100" selection-end-line="243" selection-end-column="100" />
           <folding />
         </state>
       </provider>

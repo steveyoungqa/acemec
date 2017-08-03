@@ -29,6 +29,18 @@ public class OldSitePageObjects {
 		return Driver.findElement(By.cssSelector(".headlink.active>a>span"));
 	}
 
+	public WebElement classes () throws IOException {
+		return Driver.findElement(By.cssSelector(".tab_3_center"));
+	}
+
+	public WebElement classManagement () throws IOException {
+		return Driver.findElement(By.cssSelector("#course3>h3"));
+	}
+
+	public WebElement courseManagement () throws IOException {
+		return Driver.findElement(By.cssSelector("#course1>h3"));
+	}
+
 	public WebElement statsLogs () throws IOException {
 		return Driver.findElement(By.xpath("//*[@class=' headlink active']//*[contains(text(), 'Statistics & Logs')]"));
 
@@ -37,4 +49,8 @@ public class OldSitePageObjects {
 	public WebElement Continue () throws IOException {
         return Driver.findElement(By.xpath("//*[@class='loginforce']//*[contains(text(), 'Continue')]"));
     }
+
+	public WebElement logOutOldSite () throws IOException {
+		return Driver.findElement(By.cssSelector("#b_head_logout"));
+	}
 }

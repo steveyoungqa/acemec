@@ -22,4 +22,12 @@ public class NewSitePageObjects {
 	public WebElement signIn () throws IOException {
 	    return Driver.findElement(By.id("signin"));
     }
+
+	public WebElement profileIcon () throws IOException {
+		return Driver.findElement(By.xpath("//*[@id='profileImage']"));
+	}
+
+	public WebElement signOut () throws IOException {
+		return Driver.findElement(By.xpath("//*[@data-original-title='Sign out']"));
+	}
 }
