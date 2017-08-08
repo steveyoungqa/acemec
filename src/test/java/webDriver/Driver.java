@@ -34,8 +34,8 @@ public class Driver {
 		if (webdriver == null) {
 
 			if (browser.equals("Chrome")) {
-//                    System.setProperty("webdriver.chrome.driver", "/Users/syn3286/Documents/Repos/MacMillan/selenium_cucumber_framework/selenium/chromedriverOSX");
-                    System.setProperty("webdriver.chrome.driver", "/Users/steveyoung/Documents/Repos/acemec/selenium/chromedriverOSX");
+                    System.setProperty("webdriver.chrome.driver", "/Users/syn3286/Documents/Repos/MacMillan/selenium_cucumber_framework/selenium/chromedriverOSX");
+//                    System.setProperty("webdriver.chrome.driver", "/Users/steveyoung/Documents/Repos/acemec/selenium/chromedriverOSX");
 //                    ONLY USE THE ABOVE FOR RUNNING LOCALLY IN THE IDE
 				webdriver = new ChromeDriver();
 			}
@@ -77,7 +77,7 @@ public class Driver {
 		} catch (InterruptedException e1) {
 			e1.printStackTrace();
 		}
-		getCurrentDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		getCurrentDriver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		try {
 			new WebDriverWait(getCurrentDriver(), 5).until(ExpectedConditions.elementToBeClickable((By) element));
 		} catch (Exception e) {

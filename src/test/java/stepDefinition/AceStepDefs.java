@@ -3,9 +3,9 @@ package stepDefinition;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
-import gherkin.lexer.Th;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import pageObject.NewSitePageObjects;
@@ -91,11 +91,13 @@ public class AceStepDefs {
     public void iSelectContinueToTheMECAreaLink() throws Throwable {
         OldSitePageObjects oldsite = new OldSitePageObjects();
 
-        if (Driver.findElement(By.xpath("//*[@class='loginforce']//*[contains(text(), 'Continue')]")).isDisplayed()){
-            oldsite.Continue().click();
-        }else {
-        return;
-
+        try {
+           Driver.findElement(By.xpath("//*[@class='loginforce']//*[contains(text(), 'Continue')]")).isDisplayed();
+           oldsite.Continue().click();
+        }
+        catch (NoSuchElementException e)
+        {
+            System.out.println("Continue page not displayed");
         }
 
     }
@@ -143,6 +145,7 @@ public class AceStepDefs {
     public void iSelectSignIn() throws Throwable {
         NewSitePageObjects newsite = new NewSitePageObjects();
         newsite.signIn().click();
+        Thread.sleep(5000);
     }
 
     @And("^I record the Number of Courses for the New Site$")
@@ -167,21 +170,21 @@ public class AceStepDefs {
         newsite.selectShow().click();
         Thread.sleep(2000);
         newsite.selectStudentClick().click();
-        String StudentCountNewSite = Driver.findElement(By.xpath("//*[@id='userContentJws']//*[contains(text(), 'Showing')]")).getText().replace("Showing 1 - 10 of ","").replace( " Show", "");
+        String StudentCountNewSite = Driver.findElement(By.xpath("//*[@id='userContentJws']//*[contains(text(), 'Showing')]")).getText().replace("Showing 1 - 10 of ","").replace( "   Show", "");
         FileReader.addData("studentCountNewSite", StudentCountNewSite);
 
         Thread.sleep(2000);
         newsite.selectShow().click();
         Thread.sleep(2000);
         newsite.selectTeacherClick().click();
-        String TeacherCountNewSite = Driver.findElement(By.xpath("//*[@id='userContentJws']//*[contains(text(), 'Showing')]")).getText().replace("Showing 1 - 10 of ","").replace( "Show", "");
+        String TeacherCountNewSite = Driver.findElement(By.xpath("//*[@id='userContentJws']//*[contains(text(), 'Showing')]")).getText().replace("Showing 1 - 10 of ","").replace( "   Show", "");
         FileReader.addData("teacherCountNewSite", TeacherCountNewSite);
 
         Thread.sleep(2000);
         newsite.selectShow().click();
         Thread.sleep(2000);
         newsite.selectAdminClick().click();
-        String AdminCountNewSite = Driver.findElement(By.xpath("//*[@id='userContentJws']//*[contains(text(), 'Showing')]")).getText().replace("Showing 1 - ","").replace( "Show", "");
+        String AdminCountNewSite = Driver.findElement(By.xpath("//*[@id='userContentJws']//*[contains(text(), 'Showing')]")).getText().replace("Showing 1 -","").replace( "   Show", "");
         FileReader.addData("adminCountNewSite", AdminCountNewSite);
 
         Thread.sleep(2000);
@@ -193,11 +196,15 @@ public class AceStepDefs {
         Thread.sleep(2000);
         newsite.selectArchived().click();
 
-        //Handle NO RECORDS FOUND
-//        String ArchivedCountNewSite = Driver.findElement(By.xpath("");
-//        FileReader.addData("archivedCountNewSite", ArchivedCountNewSite);
-
-
+        try {
+            Driver.findElement(By.xpath("//*[@class='alert alert-danger ng-binding'][contains(text(), 'No records found.')]")).isDisplayed();
+            FileReader.addData("archivedCountNewSite", "0");
+        }
+        catch (NoSuchElementException e)
+        {
+            String ArchivedCountNewSite = Driver.findElement(By.xpath("//*[@id='userContentJws']//*[contains(text(), 'Showing')]")).getText().replace("Showing 1 - ","").replace( " Show", "");
+            FileReader.addData("archivedCountNewSite", AdminCountNewSite);
+        }
     }
 
     @And("^I record the Number of Classes for the New Site$")
@@ -217,20 +224,38 @@ public class AceStepDefs {
 
     @Then("^I compare Number of Users from OLD Mec to NEW ACE site$")
     public void iCompareNumberOfUsersFromOLDMecToNEWACESite() throws Throwable {
-        String oldUsers = FileReader.readProperties().get("numberOfUsers");
-        String newUsers = FileReader.readProperties().get("numberOfUsersNewSite");
+        String oldUsers = FileReader.readProperties().get("numberOfUsersOld");
+
+        String newStudents = FileReader.readProperties().get("studentCountNewSite");
+        String newTeachers = FileReader.readProperties().get("teacherCountNewSite");
+        String newAdmin = FileReader.readProperties().get("adminCountNewSite");
+        String newArchived = FileReader.readProperties().get("archivedCountNewSite");
+
+        int students = Integer.parseInt(newStudents);
+        int teachers = Integer.parseInt(newTeachers);
+//        int admin = Integer.parseInt(newAdmin);
+        int archived = Integer.parseInt(newArchived);
+
+        int result = students+teachers+archived;
+
+
         String client = FileReader.readProperties().get("ClientName");
 
         System.out.println("\n" + "Client Institution: " + client);
         System.out.println("\n" + "MEC Number of Users= " + oldUsers);
-        System.out.println("ACE Number of Users= " + newUsers + "\n");
+        System.out.println("\n" + "ACE Number of Students= " + newStudents);
+        System.out.println("\n" + "ACE Number of Teachers= " + newTeachers);
+        System.out.println("\n" + "ACE Number of Admin= " + newAdmin);
+        System.out.println("\n" + "ACE Number of Archived= " + newArchived + "\n");
 
-        try {
-            assertThat(oldUsers, is((newUsers)));
-        } catch (AssertionError e) {
+        System.out.println("\n" + "Total Number of ACE Users" + result + "\n");
 
-            System.out.println("\n" + "Number of Users DOES NOT MATCH! for Client " + client);
-        }
+//        try {
+//            assertThat(oldUsers, is((newUsers)));
+//        } catch (AssertionError e) {
+//
+//            System.out.println("\n" + "Number of Users DOES NOT MATCH! for Client " + client);
+//        }
     }
 
     @Then("^I compare Number of Courses from OLD Mec to NEW ACE site$")

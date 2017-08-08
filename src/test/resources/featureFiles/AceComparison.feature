@@ -33,7 +33,7 @@ Feature: Compare Stats & Logs between Ace and Old MEC website
 #    And I record the Number of Classes for the New Site
 #    And I record the Number of Groups for the New Site
 
-#    Then I compare Number of Users from OLD Mec to NEW ACE site
+    Then I compare Number of Users from OLD Mec to NEW ACE site
 #    Then I compare Number of Courses from OLD Mec to NEW ACE site
 #    Then I compare Number of Classes from OLD Mec to NEW ACE site
 #    Then I compare Number of Groups from OLD Mec to NEW ACE site
@@ -71,9 +71,8 @@ Feature: Compare Stats & Logs between Ace and Old MEC website
 #      | BVV (Bayerischer Volkshochschulverband )  | http://arsenic.avallain.com/bvv                     | http://www.mec-3.com/bvv                                                   | 95903       | 45yes        | 95903       | password1    | 50       | 50             |
 
        #TO DO:
-#        Include Client Name and URL on Output Logs - DONE
-#        Make sure EVERY website the user is logged out after retreiving user data
-#        Handle Already Logged In page and Continue where necessary
+#
+#        Strip out adminCountNewSite string chars
 
     # CALCULATIONS:
     #
