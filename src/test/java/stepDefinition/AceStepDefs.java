@@ -3,6 +3,7 @@ package stepDefinition;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import gherkin.lexer.Th;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -102,7 +103,7 @@ public class AceStepDefs {
     @Then("^I record the Number Of Users$")
     public void iRecordTheNumberOfUsers() throws Throwable {
         String users = Driver.findElement(By.xpath("//*[@id='infopanel']//*[@class='infopaneltable']//*[contains(text(), 'Number of users:')]//following::td[1]")).getText();
-        FileReader.addData("numberOfUsers", users);
+        FileReader.addData("numberOfUsersOld", users);
     }
 
     @Then("^I record the Number Of Classes$")
@@ -146,14 +147,57 @@ public class AceStepDefs {
 
     @And("^I record the Number of Courses for the New Site$")
     public void iRecordTheNumberOfCoursesForTheNewSite() throws Throwable {
+        NewSitePageObjects newsite = new NewSitePageObjects();
+        newsite.viewUsers().click();
         String courses = Driver.findElement(By.xpath("//*[@class='panel-heading']//*[contains(text(), 'Courses')]//following::div[2]")).getText();
         FileReader.addData("numberOfCoursesNewSite", courses);
     }
 
     @And("^I record the Number of Users for the New Site$")
     public void iRecordTheNumberOfUsersForTheNewSite() throws Throwable {
-        String users = Driver.findElement(By.xpath("//*[@class='panel-heading']//*[contains(text(), 'Users')]//following::div[2]")).getText();
-        FileReader.addData("numberOfUsersNewSite", users);
+        NewSitePageObjects newsite = new NewSitePageObjects();
+
+        newsite.viewUsers().click();
+        Thread.sleep(2000);
+        newsite.selectRole().click();
+        Thread.sleep(2000);
+        newsite.selectRoleClick().click();
+
+        Thread.sleep(2000);
+        newsite.selectShow().click();
+        Thread.sleep(2000);
+        newsite.selectStudentClick().click();
+        String StudentCountNewSite = Driver.findElement(By.xpath("//*[@id='userContentJws']//*[contains(text(), 'Showing')]")).getText().replace("Showing 1 - 10 of ","").replace( " Show", "");
+        FileReader.addData("studentCountNewSite", StudentCountNewSite);
+
+        Thread.sleep(2000);
+        newsite.selectShow().click();
+        Thread.sleep(2000);
+        newsite.selectTeacherClick().click();
+        String TeacherCountNewSite = Driver.findElement(By.xpath("//*[@id='userContentJws']//*[contains(text(), 'Showing')]")).getText().replace("Showing 1 - 10 of ","").replace( "Show", "");
+        FileReader.addData("teacherCountNewSite", TeacherCountNewSite);
+
+        Thread.sleep(2000);
+        newsite.selectShow().click();
+        Thread.sleep(2000);
+        newsite.selectAdminClick().click();
+        String AdminCountNewSite = Driver.findElement(By.xpath("//*[@id='userContentJws']//*[contains(text(), 'Showing')]")).getText().replace("Showing 1 - ","").replace( "Show", "");
+        FileReader.addData("adminCountNewSite", AdminCountNewSite);
+
+        Thread.sleep(2000);
+        newsite.selectRole().click();
+        Thread.sleep(2000);
+        newsite.selectAllClick().click();
+        Thread.sleep(2000);
+        newsite.selectStatus().click();
+        Thread.sleep(2000);
+        newsite.selectArchived().click();
+
+        //Handle NO RECORDS FOUND
+//        String ArchivedCountNewSite = Driver.findElement(By.xpath("");
+//        FileReader.addData("archivedCountNewSite", ArchivedCountNewSite);
+
+
     }
 
     @And("^I record the Number of Classes for the New Site$")
