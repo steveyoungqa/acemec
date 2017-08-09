@@ -14,6 +14,7 @@ import supportMethods.FileReader;
 import webDriver.Driver;
 
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 public class AceStepDefs {
@@ -97,7 +98,7 @@ public class AceStepDefs {
         }
         catch (NoSuchElementException e)
         {
-            System.out.println("Continue page not displayed");
+//            System.out.println("Continue page not displayed");
         }
 
     }
@@ -184,7 +185,7 @@ public class AceStepDefs {
         newsite.selectShow().click();
         Thread.sleep(2000);
         newsite.selectAdminClick().click();
-        String AdminCountNewSite = Driver.findElement(By.xpath("//*[@id='userContentJws']//*[contains(text(), 'Showing')]")).getText().replace("Showing 1 -","").replace( "   Show", "");
+        String AdminCountNewSite = Driver.findElement(By.xpath("//*[@id='userContentJws']//*[contains(text(), 'Showing')]")).getText().replace("Showing 1 -","").replace( "   Show", "").toString().substring(6);
         FileReader.addData("adminCountNewSite", AdminCountNewSite);
 
         Thread.sleep(2000);
@@ -231,31 +232,34 @@ public class AceStepDefs {
         String newAdmin = FileReader.readProperties().get("adminCountNewSite");
         String newArchived = FileReader.readProperties().get("archivedCountNewSite");
 
+        int mecUsers = Integer.parseInt(oldUsers);
         int students = Integer.parseInt(newStudents);
         int teachers = Integer.parseInt(newTeachers);
-//        int admin = Integer.parseInt(newAdmin);
+        int admin = Integer.parseInt(newAdmin);
         int archived = Integer.parseInt(newArchived);
 
-        int result = students+teachers+archived;
+        int result = students+teachers+admin+archived;
 
 
         String client = FileReader.readProperties().get("ClientName");
 
-        System.out.println("\n" + "Client Institution: " + client);
-        System.out.println("\n" + "MEC Number of Users= " + oldUsers);
-        System.out.println("\n" + "ACE Number of Students= " + newStudents);
-        System.out.println("\n" + "ACE Number of Teachers= " + newTeachers);
-        System.out.println("\n" + "ACE Number of Admin= " + newAdmin);
-        System.out.println("\n" + "ACE Number of Archived= " + newArchived + "\n");
+        System.out.println("\n" + "\033[0;1m" +"Client Institution: " + client);
+        System.out.println("\n" + "MEC Number of Users=" + oldUsers);
+        System.out.println("\n" + "ACE Number of Students=" + newStudents);
+        System.out.println("\n" + "ACE Number of Teachers=" + newTeachers);
+        System.out.println("\n" + "ACE Number of Admin=" + admin);
+        System.out.println("\n" + "ACE Number of Archived=" + newArchived);
 
-        System.out.println("\n" + "Total Number of ACE Users" + result + "\n");
+        System.out.println("\n" + "Total Number of ACE Users=" + result + "\n");
 
-//        try {
-//            assertThat(oldUsers, is((newUsers)));
-//        } catch (AssertionError e) {
-//
-//            System.out.println("\n" + "Number of Users DOES NOT MATCH! for Client " + client);
-//        }
+        try {
+            assertEquals(mecUsers, is((result)));
+        } catch (AssertionError e) {
+
+            System.out.println("\n" + "Number of Users DOES NOT MATCH! for Client " + client);
+            System.out.println("\n" + "MEC is " + oldUsers + " versus " + "ACE is " + result + "" +"\n");
+            System.out.println("\n");
+        }
     }
 
     @Then("^I compare Number of Courses from OLD Mec to NEW ACE site$")
