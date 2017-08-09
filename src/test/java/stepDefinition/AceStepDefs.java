@@ -203,7 +203,7 @@ public class AceStepDefs {
         }
         catch (NoSuchElementException e)
         {
-            String ArchivedCountNewSite = Driver.findElement(By.xpath("//*[@id='userContentJws']//*[contains(text(), 'Showing')]")).getText().replace("Showing 1 - ","").replace( " Show", "");
+            String ArchivedCountNewSite = Driver.findElement(By.xpath("//*[@id='userContentJws']//*[contains(text(), 'Showing')]")).getText().replace("Showing 1 - ","").replace( " Show", "".toString().substring(6));
             FileReader.addData("archivedCountNewSite", AdminCountNewSite);
         }
     }

@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="892601e2-50ef-4df4-88f9-f1f1d720e459" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/stepDefinition/AceStepDefs.java" afterPath="$PROJECT_DIR$/src/test/java/stepDefinition/AceStepDefs.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/webDriver/Driver.java" afterPath="$PROJECT_DIR$/src/test/java/webDriver/Driver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/resources/config.properties" afterPath="$PROJECT_DIR$/src/test/resources/config.properties" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -67,8 +64,8 @@
           <file leaf-file-name="AceStepDefs.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/test/java/stepDefinition/AceStepDefs.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="100">
-                  <caret line="259" column="46" lean-forward="false" selection-start-line="259" selection-start-column="46" selection-end-line="259" selection-end-column="46" />
+                <state relative-caret-position="302">
+                  <caret line="205" column="215" lean-forward="true" selection-start-line="205" selection-start-column="215" selection-end-line="205" selection-end-column="215" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -123,7 +120,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-2371" />
     <option name="y" value="23" />
-    <option name="width" value="2026" />
+    <option name="width" value="2232" />
     <option name="height" value="1328" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -845,7 +842,7 @@
       <workItem from="1501091149520" duration="205000" />
       <workItem from="1501157233531" duration="1791000" />
       <workItem from="1501830111238" duration="1250000" />
-      <workItem from="1502032341542" duration="20728000" />
+      <workItem from="1502032341542" duration="20949000" />
     </task>
     <servers />
   </component>
@@ -882,10 +879,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42320000" />
+    <option name="totallyTimeSpent" value="42541000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-2371" y="23" width="2026" height="1328" extended-state="0" />
+    <frame x="-2371" y="23" width="2232" height="1328" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -910,7 +907,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.41747573" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.08366936" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.075799085" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1212,8 +1209,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/stepDefinition/AceStepDefs.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="259" column="46" lean-forward="false" selection-start-line="259" selection-start-column="46" selection-end-line="259" selection-end-column="46" />
+        <state relative-caret-position="302">
+          <caret line="205" column="215" lean-forward="true" selection-start-line="205" selection-start-column="215" selection-end-line="205" selection-end-column="215" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
