@@ -22,21 +22,21 @@ public class Hooks {
 			runOnce = true;
 		}
 	}
-	
+
 	@Before
 	public void before(Scenario scenario) {
 		
 		GlobalVariables.scenario = scenario;
 	}
 	
-	@After
-	public void after(Scenario scenario) {
-		System.out.println("Cleaning up the browser");
-		try {
-			Driver.webdriver.quit();
-		} catch (NullPointerException e) {
-			System.out.println("Browser already shut down.");
-		}
-	}
+//	@After
+//	public void after(Scenario scenario) {
+//		System.out.println("Cleaning up the browser");
+//		try {
+//			Driver.webdriver.quit();
+//		} catch (NullPointerException e) {
+//			System.out.println("Browser already shut down.");
+//		}
+//	}
 	}
 

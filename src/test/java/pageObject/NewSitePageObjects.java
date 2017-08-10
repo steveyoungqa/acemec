@@ -27,6 +27,10 @@ public class NewSitePageObjects {
 		return Driver.findElement(By.xpath("//*[@id='profileImage']"));
 	}
 
+	public WebElement dashBoardHome () throws IOException {
+		return Driver.findElement(By.xpath("//*[@id='dashboard']"));
+	}
+
 	public WebElement signOut () throws IOException {
 		return Driver.findElement(By.xpath("//*[@data-original-title='Sign out']"));
 	}

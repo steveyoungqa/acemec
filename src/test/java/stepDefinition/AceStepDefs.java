@@ -1,11 +1,15 @@
 package stepDefinition;
 
+import cucumber.api.CucumberOptions;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import gherkin.lexer.Th;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import pageObject.NewSitePageObjects;
@@ -44,6 +48,9 @@ public class AceStepDefs {
         OldSitePageObjects oldsite = new OldSitePageObjects();
         oldsite.userId().sendKeys(id);
         oldsite.password().sendKeys(password);
+
+
+
     }
 
     @Given("^I select the Work Area dropdown$")
@@ -85,7 +92,19 @@ public class AceStepDefs {
     @Then("^I select Login$")
     public void iSelectLogin() throws Throwable {
         OldSitePageObjects oldsite = new OldSitePageObjects();
+        String client = FileReader.readProperties().get("ClientName");
         oldsite.login().click();
+
+        try {
+            Driver.findElement(By.xpath("//*[@id='msgBox']//*[contains(text(), 'The user ID or password that you entered was not recognized')]"));
+            System.out.println("\n" + "\033[0;1m" + "LOGIN OR PASSWORD IS INCORRECT FOR CLIENT INSTITUTION " + client);
+            Driver.webdriver.close();
+            System.exit(1);
+
+        }
+        catch (NoSuchElementException e) {
+
+        }
     }
 
     @And("^I select Continue to the MEC area link$")
@@ -145,14 +164,26 @@ public class AceStepDefs {
     @Then("^I select Sign In$")
     public void iSelectSignIn() throws Throwable {
         NewSitePageObjects newsite = new NewSitePageObjects();
+        String client = FileReader.readProperties().get("ClientName");
         newsite.signIn().click();
-        Thread.sleep(5000);
+
+        try {
+            Driver.findElement(By.xpath("//*[@id='divErrorMsg'][contains(text(), 'The username or password you entered is incorrect')]"));
+            System.out.println("\n" + "\033[0;1m" + "LOGIN OR PASSWORD IS INCORRECT FOR CLIENT INSTITUTION " + client);
+            Driver.webdriver.close();
+            System.exit(1);
+
+        }
+        catch (NoSuchElementException e) {
+
+        }
+
+
     }
 
     @And("^I record the Number of Courses for the New Site$")
     public void iRecordTheNumberOfCoursesForTheNewSite() throws Throwable {
         NewSitePageObjects newsite = new NewSitePageObjects();
-        newsite.viewUsers().click();
         String courses = Driver.findElement(By.xpath("//*[@class='panel-heading']//*[contains(text(), 'Courses')]//following::div[2]")).getText();
         FileReader.addData("numberOfCoursesNewSite", courses);
     }
@@ -230,6 +261,7 @@ public class AceStepDefs {
         String newStudents = FileReader.readProperties().get("studentCountNewSite");
         String newTeachers = FileReader.readProperties().get("teacherCountNewSite");
         String newAdmin = FileReader.readProperties().get("adminCountNewSite");
+        newAdmin = newAdmin.replaceAll("[^\\d.]", "");
         String newArchived = FileReader.readProperties().get("archivedCountNewSite");
 
         int mecUsers = Integer.parseInt(oldUsers);
@@ -250,7 +282,7 @@ public class AceStepDefs {
         System.out.println("\n" + "ACE Number of Admin=" + admin);
         System.out.println("\n" + "ACE Number of Archived=" + newArchived);
 
-        System.out.println("\n" + "Total Number of ACE Users=" + result + "\n");
+        System.out.println("\n" + "Total Number of ACE Users=" + result);
 
         try {
             assertEquals(mecUsers, is((result)));
@@ -258,7 +290,6 @@ public class AceStepDefs {
 
             System.out.println("\n" + "Number of Users DOES NOT MATCH! for Client " + client);
             System.out.println("\n" + "MEC is " + oldUsers + " versus " + "ACE is " + result + "" +"\n");
-            System.out.println("\n");
         }
     }
 
@@ -272,9 +303,9 @@ public class AceStepDefs {
         int newSite = Integer.parseInt(newCourses);
         int result = newSite -16;
 
-        System.out.println("\n" + "Client Institution: " + client);
+        System.out.println("\033[0;1m" +"Client Institution: " + client);
         System.out.println("\n" + "MEC Number of Courses= " + oldCourses);
-        System.out.println("ACE Number of Courses= " + result + "\n");
+        System.out.println("ACE Number of Courses= " + result);
 
         try {
             assertThat(old, is((newSite)));
@@ -289,9 +320,9 @@ public class AceStepDefs {
         String newClasses = FileReader.readProperties().get("numberOfClassesNewSite");
         String client = FileReader.readProperties().get("ClientName");
 
-        System.out.println("\n" + "Client Institution: " + client);
+        System.out.println("\033[0;1m" + "Client Institution: " + client);
         System.out.println("\n" + "MEC Number of Classes= " + oldClasses);
-        System.out.println("ACE Number of Classes= " + newClasses + "\n");
+        System.out.println("ACE Number of Classes= " + newClasses);
 
         try {
             assertThat(oldClasses, is((newClasses)));
@@ -307,14 +338,15 @@ public class AceStepDefs {
         String newClasses = FileReader.readProperties().get("numberOfGroupsNewSite");
         String client = FileReader.readProperties().get("ClientName");
 
-        System.out.println("\n" + "Client Institution: " + client);
+        System.out.println("\n" + "\033[0;1m" +"Client Institution: " + client);
         System.out.println("\n" + "MEC Number of Groups= " + oldClasses);
-        System.out.println("ACE Number of Groups= " + newClasses + "\n");
+        System.out.println("ACE Number of Groups= " + newClasses);
 
         try {
             assertThat(oldClasses, is((newClasses)));
         } catch (AssertionError e) {
             System.out.println("\n" + "Number of Groups DOES NOT MATCH! for Client " + client + "\n");
+            System.out.println("\n");
         }
     }
 
@@ -329,5 +361,17 @@ public class AceStepDefs {
         NewSitePageObjects newsite = new NewSitePageObjects();
         newsite.profileIcon().click();
         newsite.signOut().click();
+    }
+
+    @Then("^I go back to the New Site Dashboard$")
+    public void iGoBackToTheNewSiteDashboard() throws Throwable {
+        NewSitePageObjects newsite = new NewSitePageObjects();
+        newsite.dashBoardHome().click();
+        Thread.sleep(4000);
+    }
+
+    @Then("^I quit the browser$")
+    public void iQuitTheBrowser() throws Throwable {
+        Driver.webdriver.close();
     }
 }

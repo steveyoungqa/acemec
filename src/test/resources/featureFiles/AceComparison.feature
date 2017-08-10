@@ -15,11 +15,11 @@ Feature: Compare Stats & Logs between Ace and Old MEC website
     And I select the Statistics & Logs option
     Then I record the Number Of Users
 
-#    Then I record the Number Of Courses
-#    Then I record the Number Of Classes
+    Then I record the Number Of Courses
+    Then I record the Number Of Classes
 
-#    And I select the Group Management option
-#    Then I record the Number of Groups
+    And I select the Group Management option
+    Then I record the Number of Groups
 
     And then I log out
 
@@ -29,14 +29,17 @@ Feature: Compare Stats & Logs between Ace and Old MEC website
     Then I select Sign In
 
     And I record the Number of Users for the New Site
-#    And I record the Number of Courses for the New Site
-#    And I record the Number of Classes for the New Site
-#    And I record the Number of Groups for the New Site
+    Then I go back to the New Site Dashboard
+    And I record the Number of Courses for the New Site
+    And I record the Number of Classes for the New Site
+    And I record the Number of Groups for the New Site
 
+
+#   COMPARISON TESTS:
     Then I compare Number of Users from OLD Mec to NEW ACE site
-#    Then I compare Number of Courses from OLD Mec to NEW ACE site
-#    Then I compare Number of Classes from OLD Mec to NEW ACE site
-#    Then I compare Number of Groups from OLD Mec to NEW ACE site
+    Then I compare Number of Courses from OLD Mec to NEW ACE site
+    Then I compare Number of Classes from OLD Mec to NEW ACE site
+    Then I compare Number of Groups from OLD Mec to NEW ACE site
 
     And Then I log out the New Site
 
@@ -70,22 +73,8 @@ Feature: Compare Stats & Logs between Ace and Old MEC website
 #      | LANGUAGES POINT (WAS SINGLE POINT)        | ?                                                   | ?                                                                          | 95903       | dvda5        | 95903       | password1    | 0        | 70             |
 #      | BVV (Bayerischer Volkshochschulverband )  | http://arsenic.avallain.com/bvv                     | http://www.mec-3.com/bvv                                                   | 95903       | 45yes        | 95903       | password1    | 50       | 50             |
 
-       #TO DO:
-#
-#        Strip out adminCountNewSite string chars
+  Scenario:
+    Then I quit the browser
 
-    # CALCULATIONS:
-    #
-    #    ACE USERS - Main Screen
-    #    MEC USERS - Main Screen>Work Area>Statistics & Logs - TO DO FOLLOW SKYPE CHAT
-    #
-    #    ACE Classes - Main Screen
-    #    MEC Classes - Main Screen>Classes>Class Management>Manage Classes>Users at the header of the page
-    #
-    #    ACE Courses - Main Screen
-    #    MEC Courses - Main Screen>Classes>Course Management>Manage Courses>Users at the header of the page and MINUS 16 - DONE
-    #
-    #    ACE Groups - Main Screen>Work Area>Group Management
-    #    MEC Groups - Main Screen
 
 

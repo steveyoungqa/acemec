@@ -1,4 +1,4 @@
-# Selenium Cucumber Framework
+# ACE/MEC Comparison Automation Project
 
 ### Prepare your machine:
 Check if you have a JDK (Java Development Kit) installed in Terminal with:
@@ -59,42 +59,20 @@ OS name: "mac os x", version: "10.11.3", arch: "x86_64", family: "mac"*
 #### Set-up the Framework
 
 In Stash navigate to the Selenium_Cucumber_Framework repo and Clone
-https://stash.macmillan.education/projects/QTT/repos/selenium_cucumber_framework/browse
+https://stash.macmillan.education/projects/QTT/repos/acemec
 
 Example:
 Open a Terminal: 
-**git clone https://User.Name@stash.macmillan.education/scm/qtt/selenium_cucumber_framework.git** 
+**git clone https://USER.NAME@stash.macmillan.education/scm/qtt/acemec.git** 
 
-Next Clone this Repo which contains all of the required Selenium Servers and Drivers
-**https://stash.macmillan.education/projects/QTT/repos/selenium-server-and-drivers/browse**
-
-
-#### Start the Selenium Hub and Node
-In Terminal navigate to the Selenium Servesrs and Drivers project folder i.e:
-/Users/username/Documents/Repos/MacMillan/selenium-server-and-drivers
-
-Now Download into this directory the latest Selenium Standalone Server from here
-http://www.seleniumhq.org/download/
-
-Start the node in Terminal with: (ensure your version number is correct)
-**java -jar selenium-server-standalone-2.53.0.jar -role hub**
-A message should appear: *Selenium Grid hub is up and running*
-
-Start the hub in a new Terminal window with:
-**java -jar selenium-server-standalone-2.53.0.jar -role node -nodeConfig macNodeConfig.json**
-A message should appear *The node is registered to the hub and ready to use*
-
-*INFO - Registering the node to the hub: http://localhost:4444/grid/register*
-*INFO - The node is registered to the hub and ready to use*
-
-See the hub in the browser here:
-http://localhost:4444/grid/console?config=true&configDebug=true#
 
 #### Run the Tests locally
 
-Open the Selenium_Cucumber_Framework project in the IDE of your choice and open the folder **testRunner** and the file **TestRunner**
+Open the Selenium_Cucumber_Framework project in the IDE of your choice and ensure that in the webDriver/Driver folder you have set-up the path to your Chrome
+browser and that it is not commented out i.e:
+System.setProperty("webdriver.chrome.driver", "/Users/mubeen/Documents/Repos/acemec/selenium/chromedriverOSX");
 
-Right click on the file and choose Run TestRunner and a Chrome browser should open and run through the SampleGoogleSearch.feature file tests
+Right click on the AceComparison.feature file and Select RUN
  
 Open **config.properties** to make changes to the local browser, its default setting should be **browser:Chrome**
 
