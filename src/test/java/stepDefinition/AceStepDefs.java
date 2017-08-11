@@ -17,6 +17,9 @@ import pageObject.OldSitePageObjects;
 import supportMethods.FileReader;
 import webDriver.Driver;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
@@ -202,22 +205,36 @@ public class AceStepDefs {
         newsite.selectShow().click();
         Thread.sleep(2000);
         newsite.selectStudentClick().click();
-        String StudentCountNewSite = Driver.findElement(By.xpath("//*[@id='userContentJws']//*[contains(text(), 'Showing')]")).getText().replace("Showing 1 - 10 of ","").replace( "   Show", "");
-        FileReader.addData("studentCountNewSite", StudentCountNewSite);
+        String StudentCountNewSite = Driver.findElement(By.xpath("//*[@id='userContentJws']//*[contains(text(), 'Showing')]")).getText();
+        Pattern pattern = Pattern.compile("\\d+ of (\\d+)");
+        Matcher matcher = pattern.matcher(StudentCountNewSite);
+        if (matcher.find()) {
+            FileReader.addData("studentCountNewSite", matcher.group(1));
+        }
+
 
         Thread.sleep(2000);
         newsite.selectShow().click();
         Thread.sleep(2000);
         newsite.selectTeacherClick().click();
-        String TeacherCountNewSite = Driver.findElement(By.xpath("//*[@id='userContentJws']//*[contains(text(), 'Showing')]")).getText().replace("Showing 1 - 10 of ","").replace( "   Show", "");
-        FileReader.addData("teacherCountNewSite", TeacherCountNewSite);
+        String TeacherCountNewSite = Driver.findElement(By.xpath("//*[@id='userContentJws']//*[contains(text(), 'Showing')]")).getText();
+        Pattern pattern2 = Pattern.compile("\\d+ of (\\d+)");
+        Matcher matcher2 = pattern2.matcher(TeacherCountNewSite);
+        if (matcher2.find()) {
+            FileReader.addData("teacherCountNewSite", matcher2.group(1));
+        }
 
         Thread.sleep(2000);
         newsite.selectShow().click();
         Thread.sleep(2000);
+
         newsite.selectAdminClick().click();
-        String AdminCountNewSite = Driver.findElement(By.xpath("//*[@id='userContentJws']//*[contains(text(), 'Showing')]")).getText().replace("Showing 1 -","").replace( "   Show", "").toString().substring(6);
-        FileReader.addData("adminCountNewSite", AdminCountNewSite);
+        String AdminCountNewSite = Driver.findElement(By.xpath("//*[@id='userContentJws']//*[contains(text(), 'Showing')]")).getText();
+        Pattern pattern3 = Pattern.compile("\\d+ of (\\d+)");
+        Matcher matcher3 = pattern3.matcher(AdminCountNewSite);
+        if (matcher3.find()) {
+            FileReader.addData("adminCountNewSite", matcher3.group(1));
+        }
 
         Thread.sleep(2000);
         newsite.selectRole().click();
@@ -234,8 +251,12 @@ public class AceStepDefs {
         }
         catch (NoSuchElementException e)
         {
-            String ArchivedCountNewSite = Driver.findElement(By.xpath("//*[@id='userContentJws']//*[contains(text(), 'Showing')]")).getText().replace("Showing 1 - ","").replace( " Show", "".toString().substring(6));
-            FileReader.addData("archivedCountNewSite", AdminCountNewSite);
+            String ArchivedCountNewSite = Driver.findElement(By.xpath("//*[@id='userContentJws']//*[contains(text(), 'Showing')]")).getText();
+            Pattern pattern4 = Pattern.compile("\\d+ of (\\d+)");
+            Matcher matcher4 = pattern4.matcher(AdminCountNewSite);
+            if (matcher4.find()) {
+                FileReader.addData("archivedCountNewSite", matcher4.group(1));
+            }
         }
     }
 
@@ -261,7 +282,6 @@ public class AceStepDefs {
         String newStudents = FileReader.readProperties().get("studentCountNewSite");
         String newTeachers = FileReader.readProperties().get("teacherCountNewSite");
         String newAdmin = FileReader.readProperties().get("adminCountNewSite");
-        newAdmin = newAdmin.replaceAll("[^\\d.]", "");
         String newArchived = FileReader.readProperties().get("archivedCountNewSite");
 
         int mecUsers = Integer.parseInt(oldUsers);
