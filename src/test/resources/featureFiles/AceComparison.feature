@@ -45,7 +45,7 @@ Feature: Compare Stats & Logs between Ace and Old MEC website
 
     Examples:
       | Institution                               | MEC URL                                             | ACE URL                                                                    | MEC User    | MEC Password | ACE User    | ACE Password | Min User | Student Number |
-#      | BTL                                       | http://arsenic.avallain.com/btl                     | https://lms-api-sdbmig-uat.macmillan.education/ACE/btl                     | 95903       | mdlifl       | 95903       | mdlifl       | 100      | 168            |
+      | BTL                                       | http://arsenic.avallain.com/btl                     | https://lms-api-sdbmig-uat.macmillan.education/ACE/btl                     | 95903       | mdlifl       | 95903       | mdlifl       | 100      | 168            |
 #      | Britanico                                 | http://arsenic.avallain.com/britanico               | https://lms-api-sdbmig-uat.macmillan.education/ACE/britanico               | 95903       | cigew        | 95903       | password1    | 4000     | 4000           |
 #      | English in your hands                     | http://arsenic.avallain.com/planetenglish           | https://lms-api-sdbmig-uat.macmillan.education/ACE/planetenglish           | 95903       | phl63        | 95903       | password1    | 2000     | 2000           |
 #      | UVL                                       | http://arsenic.avallain.com/Cilondrina              | https://lms-api-sdbmig-uat.macmillan.education/ACE/Cilondrina              | 95903       | cigew        | 95903       | gr33n        | 0        | 802            |
@@ -62,7 +62,7 @@ Feature: Compare Stats & Logs between Ace and Old MEC website
 #      | UNIVERSIDAD PANAMERICANA, GUADALAJARA     | http://arsenic.avallain.com/up                      | https://lms-api-sdbmig-uat.macmillan.education/ACE/up                      | 95903       | MEC03        | 95903       | password1    | 250      | 446            |
 #      | ULA, MEXICO (UNIVERSIDAD LATINOAMERICANA) | http://arsenic.avallain.com/ula                     | https://lms-api-sdbmig-uat.macmillan.education/ACE/ula                     | 95903       | bd962        | 95903       | password1    | 250      | 278            |
 #      | CI LONDRINA(+CW)                          | http://arsenic.avallain.com/cilondrina              | https://lms-api-sdbmig-uat.macmillan.education/ACE/cilondrina              |             |              |             |              | 150      | 150            |
-      | INFOLANGUES                               | http://arsenic.avallain.com/infolangues             | https://lms-api-sdbmig-uat.macmillan.education/ACE/infolangues             | 95903       | 8pyet        | 95903       | password1    | 300      | 365            |
+#      | INFOLANGUES                               | http://arsenic.avallain.com/infolangues             | https://lms-api-sdbmig-uat.macmillan.education/ACE/infolangues             | 95903       | 8pyet        | 95903       | password1    | 300      | 365            |
 #      | EAQUALS                                   | http://arsenic.avallain.com/eaquals                 | https://lms-api-sdbmig-uat.macmillan.education/ACE/eaquals                 | 95903       | 8ikeb        | 95903       | password1    | 250      | 284            |
 #      | MUNCHENER VHS                             | http://arsenic.avallain.com/mvhs                    | https://lms-api-sdbmig-uat.macmillan.education/ACE/mvhs                    | 95903       | uzy5ip       | 95903       | uzy5ip       | 250      | 284            |
 #      | KATEDRA                                   | http://arsenic.avallain.com/katedra                 | https://lms-api-sdbmig-uat.macmillan.education/ACE/katedra                 |             |              |             |              | 125      | 212            |
@@ -75,6 +75,18 @@ Feature: Compare Stats & Logs between Ace and Old MEC website
 
   Scenario:
     Then I quit the browser
+
+
+#    INSTRUCTIONS TO RUN AUTOMATED COMPARISON TESTS:
+
+#    It is best to run each Institution Comparison test one at a time so it easy to keep track of the outputted results
+#    UnCommented out the Client you wish to test in the Example table, use CMD + ? on a MAC, move the cursor to the top of this file, right click and Run Feature: AceComparison
+#    Use the Example Table to update URLS, Logins and Passwords
+
+#    Courses comparison currently has a -16 rule applied after capturing Old vs New data
+
+#    Ensure that in the webDriver/Driver folder you have set-up the path to your Chrome browser and that it is not commented out
+#    i.e: System.setProperty("webdriver.chrome.driver", "/Users/mubeen/Documents/Repos/acemec/selenium/chromedriverOSX");
 
 
 

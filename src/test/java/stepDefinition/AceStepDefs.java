@@ -229,11 +229,21 @@ public class AceStepDefs {
         Thread.sleep(2000);
 
         newsite.selectAdminClick().click();
-        String AdminCountNewSite = Driver.findElement(By.xpath("//*[@id='userContentJws']//*[contains(text(), 'Showing')]")).getText();
-        Pattern pattern3 = Pattern.compile("\\d+ of (\\d+)");
-        Matcher matcher3 = pattern3.matcher(AdminCountNewSite);
-        if (matcher3.find()) {
-            FileReader.addData("adminCountNewSite", matcher3.group(1));
+
+        try {
+            Driver.findElement(By.xpath("//*[@class='alert alert-danger ng-binding'][contains(text(), 'No records found.')]")).isDisplayed();
+            FileReader.addData("adminCountNewSite", "0");
+        }
+
+        catch (NoSuchElementException e) {
+
+
+            String AdminCountNewSite = Driver.findElement(By.xpath("//*[@id='userContentJws']//*[contains(text(), 'Showing')]")).getText();
+            Pattern pattern3 = Pattern.compile("\\d+ of (\\d+)");
+            Matcher matcher3 = pattern3.matcher(AdminCountNewSite);
+            if (matcher3.find()) {
+                FileReader.addData("adminCountNewSite", matcher3.group(1));
+            }
         }
 
         Thread.sleep(2000);
@@ -253,7 +263,7 @@ public class AceStepDefs {
         {
             String ArchivedCountNewSite = Driver.findElement(By.xpath("//*[@id='userContentJws']//*[contains(text(), 'Showing')]")).getText();
             Pattern pattern4 = Pattern.compile("\\d+ of (\\d+)");
-            Matcher matcher4 = pattern4.matcher(AdminCountNewSite);
+            Matcher matcher4 = pattern4.matcher(ArchivedCountNewSite);
             if (matcher4.find()) {
                 FileReader.addData("archivedCountNewSite", matcher4.group(1));
             }
@@ -340,7 +350,7 @@ public class AceStepDefs {
         String newClasses = FileReader.readProperties().get("numberOfClassesNewSite");
         String client = FileReader.readProperties().get("ClientName");
 
-        System.out.println("\033[0;1m" + "Client Institution: " + client);
+        System.out.println("\n" + "\033[0;1m" + "Client Institution: " + client);
         System.out.println("\n" + "MEC Number of Classes= " + oldClasses);
         System.out.println("ACE Number of Classes= " + newClasses);
 
